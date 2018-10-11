@@ -32,9 +32,9 @@
   
 *************************/
 
+// Card Variables
 
 let suits = ["Clubs", "Diamonds", "Hearts", "Spades"];
-
 let values = [{ name: "Ace",    points: 1 }, 
               { name: "King",   points: 10 },
               { name: "Queen",  points: 10 },
@@ -49,24 +49,25 @@ let values = [{ name: "Ace",    points: 1 },
               { name: "Three",  points: 3 },
               { name: "Two",    points: 2 } ];
 
-// Function that changes value of Ace depending on user score, adds "soft/hard hand feature"
+// DOM Variables
 
 let gameText = document.getElementById('gameText');
-
 let newGameBtn = document.getElementById('newGameBtn');
 let hitBtn = document.getElementById('hitBtn');
 let stayBtn = document.getElementById('stayBtn');
 
-let deck = []; // global
-let numCardsDealt = 0;
+// Game Variables
 
-// How add functions to objects?
-// How to create a more abstract "hand" object that can then be instantiated to a dealerHand and a playerHand?
+let deck = [],
+    numCardsDealt = 0;
 
 let dealerHand = { cards: [], score: 0, 
-                   displayCards: document.getElementById('dealerHand') };
+                   displayCards: document.getElementById('dealerHand'),
+                   displayScore: document.getElementById('dealerScore')};
+
 let playerHand = { cards: [], score: 0,
-                   displayCards: document.getElementById('playerHand') };
+                   displayCards: document.getElementById('playerHand'),
+                   displayScore: document.getElementById('playerScore')};
 
 newGameBtn.addEventListener('click', function(){
   
@@ -139,14 +140,16 @@ function getRandomCard(){
     
 }
 
-function getNumValue(card){
-    
+function shuffleDeck(deck){
+    // To do - change system to shuffle deck instead of pulling random card, clearer intent
+
 }
 
 function calcScore(hand, cardIndex){
     // When is a hand soft? When does the Ace change values from 11 to 1?
     hand.score += hand.cards[cardIndex].points;
-    
+    hand.displayScore.innerText = `Score: ${hand.score}`;
+
 }
 
 function dealCard(hand, numCards){
