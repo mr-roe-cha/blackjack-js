@@ -30,6 +30,11 @@
     - what happens when dealer and player both hit blackjack?
     - what happens when player hits 21? can player still hit? probably not, goes to dealer to start hitting
   
+    PUSH WHEN TIED
+    CHECK FOR BLACKJACK WHEN CARDS FIRST DEALT
+    DEALER STAYS IF TIED WITH PLAYER AND SCORE GREATER THAN 17
+    (dealer hit when tied w/ player at 20, busted)
+
 *************************/
 
 // Card Variables
@@ -157,7 +162,7 @@ function calcScore(hand, cardIndex){
     }
 
     if(hasAce && hand.score + 10 <= 21){
-        //hand.score += 10;
+        hand.score += 10;
     }
 
     hand.displayScore.innerText = `Score: ${hand.score}`;
