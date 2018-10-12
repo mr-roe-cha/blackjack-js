@@ -89,10 +89,10 @@ stayBtn.addEventListener('click', function(){
         
     };
 
-    if(dealerHand.score < playerHand.score) {
+    if(dealerHand.score <= playerHand.score) {
         dealCard(dealerHand, 1);
     };
-    
+
     gameOver();
 
 });
