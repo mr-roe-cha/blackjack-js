@@ -77,16 +77,8 @@ newGameBtn.addEventListener('click', function(){
 
 hitBtn.addEventListener('click', function(){
   
-    if (playerHand.score <= 21){
+    dealCard(playerHand, 1);
         
-        dealCard(playerHand, 1);
-        
-    } else {
-      
-        gameOver();
-        
-    }
-
 });
 
 stayBtn.addEventListener('click', function(){
@@ -96,6 +88,8 @@ stayBtn.addEventListener('click', function(){
         dealCard(dealerHand, 1);
         
     }
+
+    gameOver();
 
 });
 
@@ -166,7 +160,7 @@ function dealCard(hand, numCards){
     
     console.log(hand.score);
     
-    if(hand.score >= 21 || numCardsDealt === 52) { gameOver(); }
+    if(hand.score > 21 || numCardsDealt === 52) { gameOver(); }
     
 }
 
@@ -204,11 +198,18 @@ function gameOver(){
   
     // Set buttons and game text
     
+    newGameBtn.style.display = "inline";
+    hitBtn.style.display = "none";
+    stayBtn.style.display = "none";
+
+    if(playerHand.playerScore)    
     gameText.innerText = "Game Over:"
     newGameBtn.style.display = "inline";
     hitBtn.style.display = "none";
     stayBtn.style.display = "none";
-  
+
+
+
 }
 
 function clearHand(hand){
