@@ -87,8 +87,12 @@ stayBtn.addEventListener('click', function(){
         
         dealCard(dealerHand, 1);
         
-    }
+    };
 
+    if(dealerHand.score < playerHand.score) {
+        dealCard(dealerHand, 1);
+    };
+    
     gameOver();
 
 });
@@ -205,6 +209,9 @@ function gameOver(){
     if(playerHand.score <= 21){
         if(playerHand.score > dealerHand.score || dealerHand.score > 21){
             gameText.innerText = "PLAYER WINS!"
+        }
+        else{
+           gameText.innerText = "DEALER WINS"
         }
     } else{
         gameText.innerText = "DEALER WINS"
