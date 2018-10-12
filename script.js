@@ -145,9 +145,22 @@ function shuffleDeck(deck){
 
 function calcScore(hand, cardIndex){
     // When is a hand soft? When does the Ace change values from 11 to 1?
-    hand.score += hand.cards[cardIndex].points;
-    hand.displayScore.innerText = `Score: ${hand.score}`;
+    
+    let hasAce = false;
+    hand.score = 0;
 
+    for(let i = 0; i < hand.cards.length; i++){
+        if(hand.cards[i].valueStr === 'Ace'){
+            hasAce = true;
+        }
+        hand.score += hand.cards[i].points;
+    }
+
+    if(hasAce && hand.score + 10 <= 21){
+        //hand.score += 10;
+    }
+
+    hand.displayScore.innerText = `Score: ${hand.score}`;
 }
 
 function dealCard(hand, numCards){
