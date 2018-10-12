@@ -203,16 +203,12 @@ function gameOver(){
     stayBtn.style.display = "none";
 
     if(playerHand.score <= 21){
-        if(playerHand.score > dealerHand.score){
+        if(playerHand.score > dealerHand.score || dealerHand.score > 21){
             gameText.innerText = "PLAYER WINS!"
-        } else {
-            gameText.innerText = "DEALER WINS"
         }
     } else{
         gameText.innerText = "DEALER WINS"
-
     }
-
 }
 
 function clearHand(hand){
