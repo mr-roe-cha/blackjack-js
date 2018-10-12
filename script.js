@@ -202,13 +202,16 @@ function gameOver(){
     hitBtn.style.display = "none";
     stayBtn.style.display = "none";
 
-    if(playerHand.playerScore)    
-    gameText.innerText = "Game Over:"
-    newGameBtn.style.display = "inline";
-    hitBtn.style.display = "none";
-    stayBtn.style.display = "none";
+    if(playerHand.score <= 21){
+        if(playerHand.score > dealerHand.score){
+            gameText.innerText = "PLAYER WINS!"
+        } else {
+            gameText.innerText = "DEALER WINS"
+        }
+    } else{
+        gameText.innerText = "DEALER WINS"
 
-
+    }
 
 }
 
